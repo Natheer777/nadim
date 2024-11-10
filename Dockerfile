@@ -7,8 +7,11 @@ RUN docker-php-ext-install mysqli
 # نسخ ملفات التطبيق إلى مجلد html داخل الحاوية
 COPY . /var/www/html/
 
-# ضبط Apache لاستخدام login.php كملف رئيسي
+# ضبط Apache لاستخدام login.php كصفحة رئيسية مع الحفاظ على إمكانية الوصول إلى بقية الصفحات
 RUN echo "DirectoryIndex login.php" >> /etc/apache2/apache2.conf
+
+# تفعيل mod_rewrite لدعم الروابط النظيفة
+RUN a2enmod rewrite
 
 # ضبط أذونات المجلد
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
