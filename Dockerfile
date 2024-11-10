@@ -1,7 +1,7 @@
-
-
-# اختر صورة PHP الرسمية
 FROM php:8.0-apache
+
+# تثبيت mysqli والامتدادات الأخرى (إذا كانت هناك حاجة)
+RUN docker-php-ext-install mysqli
 
 # نسخ ملفات المشروع إلى داخل الحاوية
 COPY . /var/www/html/
