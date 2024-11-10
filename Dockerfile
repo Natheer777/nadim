@@ -13,7 +13,7 @@ RUN git clone https://github.com/Natheer777/nadim.git /var/www/html
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
 # تعيين الصفحة الرئيسية في Apache
-RUN echo "DirectoryIndex login.php" >> /etc/apache2/apache2.conf
+# RUN echo "DirectoryIndex DirectoryIndex.php" >> 
 
 ENV DB_SERVERNAME=bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com
 ENV DB_USERNAME=ur2crl9wmg5jemi9
