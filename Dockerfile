@@ -1,11 +1,11 @@
-# استخدام صورة PHP الأساسية مع خادم Apache
-FROM php:8.0-apache
+# استخدام صورة Apache وPHP الأساسية
+FROM php:apache
 
-# نسخ ملفات المشروع إلى مجلد العمل في الحاوية
+# نسخ ملفات التطبيق إلى مجلد html داخل الحاوية
 COPY . /var/www/html/
 
-# تثبيت Composer إذا كان التطبيق يستخدمه (اختياري)
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# ضبط Apache لاستخدام login.php كملف رئيسي
+RUN echo "DirectoryIndex login.php" >> /etc/apache2/apache2.conf
 
-# تغيير أذونات المجلد الرئيسي (اختياري)
-RUN chown -R www-data:www-data /var/www/html
+# ضبط أذونات المجلد
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
