@@ -4,7 +4,17 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
-$conn = new mysqli("localhost", "root", "", "online_store");
+
+$servername = "bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com";
+$username = "ur2crl9wmg5jemi9";
+$password = "h7kGTQvuNYzVBDxaxOxH";
+$dbname = "bcc63l03xd1znxj153qc";
+
+// الاتصال بقاعدة البيانات
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+
+// $conn = new mysqli("localhost", "root", "", "online_store");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
