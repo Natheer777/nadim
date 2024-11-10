@@ -1,9 +1,8 @@
-
-
 <?php
-session_start();
+ob_start(); // يبدأ الحفظ المؤقت للإخراج
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+session_start();
 
 $conn = new mysqli("localhost", "root", "", "online_store");
 
