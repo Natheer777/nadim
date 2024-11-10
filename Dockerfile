@@ -1,6 +1,9 @@
 # استخدام صورة Apache وPHP الأساسية
 FROM php:apache
 
+# تثبيت مكتبة mysqli
+RUN docker-php-ext-install mysqli
+
 # نسخ ملفات التطبيق إلى مجلد html داخل الحاوية
 COPY . /var/www/html/
 
