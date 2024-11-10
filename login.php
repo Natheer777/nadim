@@ -6,15 +6,15 @@ session_start();
 
 
 
-$servername = getenv('bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com');  // قيمة الخادم في Clever Cloud
-$username = getenv('ur2crl9wmg5jemi9');      // اسم المستخدم في Clever Cloud
-$password = getenv('h7kGTQvuNYzVBDxaxOxH');      // كلمة المرور في Clever Cloud
-$dbname = getenv('bcc63l03xd1znxj153qc');            // اسم قاعدة البيانات في Clever Cloud
+// $servername = getenv('bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com');  // قيمة الخادم في Clever Cloud
+// $username = getenv('ur2crl9wmg5jemi9');      // اسم المستخدم في Clever Cloud
+// $password = getenv('h7kGTQvuNYzVBDxaxOxH');      // كلمة المرور في Clever Cloud
+// $dbname = getenv('bcc63l03xd1znxj153qc');            // اسم قاعدة البيانات في Clever Cloud
 
-// الاتصال بقاعدة البيانات
-$conn = new mysqli($servername, $username, $password, $dbname);
+// // الاتصال بقاعدة البيانات
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
-// $conn = new mysqli("localhost", "root", "", "online_store");
+$conn = new mysqli("bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com", "ur2crl9wmg5jemi9", "h7kGTQvuNYzVBDxaxOxH", "bcc63l03xd1znxj153qc");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
