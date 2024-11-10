@@ -5,14 +5,14 @@ ini_set('display_errors', 1);
 session_start();
 
 
-$servername = "bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com";
-$username = "ur2crl9wmg5jemi9";
-$password = "h7kGTQvuNYzVBDxaxOxH";
-$dbname = "bcc63l03xd1znxj153qc";
+
+$servername = getenv('bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com');  // قيمة الخادم في Clever Cloud
+$username = getenv('ur2crl9wmg5jemi9');      // اسم المستخدم في Clever Cloud
+$password = getenv('h7kGTQvuNYzVBDxaxOxH');      // كلمة المرور في Clever Cloud
+$dbname = getenv('bcc63l03xd1znxj153qc');            // اسم قاعدة البيانات في Clever Cloud
 
 // الاتصال بقاعدة البيانات
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 
 // $conn = new mysqli("localhost", "root", "", "online_store");
 

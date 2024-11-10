@@ -15,11 +15,11 @@ RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 # تعيين الصفحة الرئيسية في Apache
 RUN echo "DirectoryIndex login.php" >> /etc/apache2/apache2.conf
 
-# تعيين متغيرات بيئية للاتصال بقاعدة البيانات
 ENV DB_SERVERNAME=bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com
 ENV DB_USERNAME=ur2crl9wmg5jemi9
 ENV DB_PASSWORD=h7kGTQvuNYzVBDxaxOxH
 ENV DB_NAME=bcc63l03xd1znxj153qc
+
 
 # تشغيل Apache في الوضع الأمامي
 CMD ["apache2-foreground"]
