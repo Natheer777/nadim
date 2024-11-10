@@ -15,3 +15,6 @@ RUN a2enmod rewrite
 
 # ضبط أذونات المجلد
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+
+# ضبط ServerName لتجنب رسالة التحذير
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
