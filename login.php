@@ -16,6 +16,10 @@ session_start();
 
 $conn = new mysqli("bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com", "ur2crl9wmg5jemi9", "h7kGTQvuNYzVBDxaxOxH", "bcc63l03xd1znxj153qc");
 
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
     $password = $_POST['password'];
