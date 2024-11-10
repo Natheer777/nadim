@@ -1,25 +1,19 @@
-FROM php:apache
 
-# تثبيت git لتنزيل المشروع
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
-# تثبيت مكتبة mysqli
-RUN docker-php-ext-install mysqli
+# اختر صورة PHP الرسمية
+FROM php:8.0-apache
 
-# تنزيل المشروع من GitHub
-RUN git clone https://github.com/Natheer777/nadim.git 
+# نسخ ملفات المشروع إلى داخل الحاوية
+COPY . /var/www/html/
 
-# ضبط الأذونات
-RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+# تمكين mod_rewrite الخاص بـ Apache (إذا كنت بحاجة إلى إعادة كتابة الروابط)
+RUN a2enmod rewrite
 
-# تعيين الصفحة الرئيسية في Apache
-# RUN echo "DirectoryIndex DirectoryIndex.php" >> 
-
+# إعدادات قاعدة بيانات، إذا كنت بحاجة إلى تهيئة بيئة
 ENV DB_SERVERNAME=bcc63l03xd1znxj153qc-mysql.services.clever-cloud.com
 ENV DB_USERNAME=ur2crl9wmg5jemi9
 ENV DB_PASSWORD=h7kGTQvuNYzVBDxaxOxH
 ENV DB_NAME=bcc63l03xd1znxj153qc
 
-
-# تشغيل Apache في الوضع الأمامي
-CMD ["apache2-foreground"]
+# تعيين المنفذ الذي يستمع عليه الخادم
+EXPOSE 80
